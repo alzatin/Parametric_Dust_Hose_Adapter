@@ -32,10 +32,10 @@
     },
     {
       "atomType": "Molecule",
-      "x": 0.1388888888888889,
+      "x": 0.14285714285714285,
       "y": 0.625,
       "uniqueID": "id-4202",
-      "name": "Base",
+      "name": "Exterior",
       "topLevel": false,
       "allAtoms": [
         {
@@ -52,8 +52,8 @@
         },
         {
           "atomType": "Circle",
-          "x": 0.20171957671957674,
-          "y": 0.5472222222222223,
+          "x": 0.5714285714285714,
+          "y": 0.25555555555555554,
           "uniqueID": "id-4206",
           "ioValues": [
             {
@@ -162,69 +162,6 @@
           ]
         },
         {
-          "atomType": "Fusion",
-          "x": 0.33664021164021163,
-          "y": 0.6333333333333333,
-          "uniqueID": "id-4234",
-          "ioValues": [
-            {
-              "name": "Shape 1",
-              "ioValue": {
-                "geometry": "move-rectangle-500-500-0--265-0",
-                "dimension": "2D",
-                "plane": {
-                  "origin": [
-                    0,
-                    0,
-                    0
-                  ],
-                  "xDir": [
-                    1,
-                    0,
-                    0
-                  ],
-                  "normal": [
-                    0,
-                    0,
-                    1
-                  ]
-                },
-                "color": "#aad7f2",
-                "tags": [],
-                "bom": []
-              }
-            },
-            {
-              "name": "Shape 2",
-              "ioValue": {
-                "geometry": "circle-29.406",
-                "dimension": "2D",
-                "tags": [],
-                "plane": {
-                  "origin": [
-                    0,
-                    0,
-                    0
-                  ],
-                  "xDir": [
-                    1,
-                    0,
-                    0
-                  ],
-                  "normal": [
-                    0,
-                    0,
-                    1
-                  ]
-                },
-                "color": "#aad7f2",
-                "bom": []
-              }
-            }
-          ],
-          "unionType": "Fusion"
-        },
-        {
           "atomType": "Circle",
           "x": 0.5251322751322751,
           "y": 0.8805555555555555,
@@ -288,8 +225,8 @@
         },
         {
           "atomType": "Loft",
-          "x": 0.7936507936507936,
-          "y": 0.2833333333333333,
+          "x": 0.75,
+          "y": 0.5583333333333333,
           "uniqueID": "id-4308",
           "ioValues": [
             {
@@ -364,13 +301,72 @@
             }
           ],
           "closedSelection": 0
+        },
+        {
+          "atomType": "Extrude",
+          "x": 0.671957671957672,
+          "y": 0.3,
+          "uniqueID": "id-4313",
+          "ioValues": [
+            {
+              "name": "geometry",
+              "ioValue": "__GEOMETRY_INPUT__"
+            },
+            {
+              "name": "height",
+              "ioValue": 100,
+              "currentEquation": "100"
+            }
+          ]
+        },
+        {
+          "atomType": "Difference",
+          "x": 0.8406084656084656,
+          "y": 0.275,
+          "uniqueID": "id-4317",
+          "ioValues": [
+            {
+              "name": "geometry1",
+              "ioValue": "__GEOMETRY_INPUT__"
+            },
+            {
+              "name": "geometry2",
+              "ioValue": "__GEOMETRY_INPUT__"
+            }
+          ]
+        },
+        {
+          "atomType": "Move",
+          "x": 0.871031746031746,
+          "y": 0.6805555555555555,
+          "uniqueID": "id-4321",
+          "ioValues": [
+            {
+              "name": "geometry",
+              "ioValue": "__GEOMETRY_INPUT__"
+            },
+            {
+              "name": "xDist",
+              "ioValue": 0,
+              "currentEquation": "0"
+            },
+            {
+              "name": "yDist",
+              "ioValue": 0
+            },
+            {
+              "name": "zDist",
+              "ioValue": 2,
+              "currentEquation": "2"
+            }
+          ]
         }
       ],
       "allConnectors": [
         {
-          "ap2Name": "Shape 2",
+          "ap2Name": "geometry",
           "ap1ID": "id-4206",
-          "ap2ID": "id-4234"
+          "ap2ID": "id-4313"
         },
         {
           "ap2Name": "geometry",
@@ -393,11 +389,6 @@
           "ap2ID": "id-4228"
         },
         {
-          "ap2Name": "Shape 1",
-          "ap1ID": "id-4228",
-          "ap2ID": "id-4234"
-        },
-        {
           "ap2Name": "geometry2",
           "ap1ID": "id-4228",
           "ap2ID": "id-4218"
@@ -418,8 +409,23 @@
           "ap2ID": "id-4308"
         },
         {
-          "ap2Name": "number or geometry",
+          "ap2Name": "geometry1",
           "ap1ID": "id-4308",
+          "ap2ID": "id-4317"
+        },
+        {
+          "ap2Name": "geometry2",
+          "ap1ID": "id-4313",
+          "ap2ID": "id-4317"
+        },
+        {
+          "ap2Name": "geometry",
+          "ap1ID": "id-4317",
+          "ap2ID": "id-4321"
+        },
+        {
+          "ap2Name": "number or geometry",
+          "ap1ID": "id-4321",
           "ap2ID": "id-4204"
         }
       ],
@@ -484,8 +490,8 @@
     },
     {
       "atomType": "Molecule",
-      "x": 0.32407407407407407,
-      "y": 0.26111111111111107,
+      "x": 0.32671957671957674,
+      "y": 0.2722222222222222,
       "uniqueID": "id-4263",
       "name": "Outer Loft",
       "ioValues": [
@@ -641,14 +647,14 @@
             {
               "name": "Shape 2",
               "ioValue": {
-                "geometry": "move-move-circle-79.5-0--13-0-0-0-0",
-                "dimension": "2D",
+                "geometry": "move-loft-move-rotate-circle-20-0-0-0-2-25-0-cut-move-circle-79.5-0--13-0-move-rectangle-500-500-0--265-0-{\"origin\":[0,69.5,-7.716050021144838e-15],\"xDir\":[1,0,0],\"normal\":[0,-1,1.1102230246251565e-16]}-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-0-0-2",
+                "dimension": "3D",
                 "tags": [],
                 "plane": {
                   "origin": [
                     0,
                     0,
-                    2
+                    0
                   ],
                   "xDir": [
                     1,
