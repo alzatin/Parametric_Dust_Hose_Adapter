@@ -32,8 +32,8 @@
     },
     {
       "atomType": "Molecule",
-      "x": 0.13425925925925927,
-      "y": 0.6583333333333333,
+      "x": 0.14153439153439154,
+      "y": 0.6527777777777778,
       "uniqueID": "id-4202",
       "name": "Base",
       "topLevel": false,
@@ -52,8 +52,8 @@
         },
         {
           "atomType": "Circle",
-          "x": 0.2043650793650794,
-          "y": 0.5555555555555556,
+          "x": 0.20171957671957674,
+          "y": 0.5472222222222223,
           "uniqueID": "id-4206",
           "ioValues": [
             {
@@ -65,8 +65,8 @@
         },
         {
           "atomType": "Circle",
-          "x": 0.1474867724867725,
-          "y": 0.275,
+          "x": 0.1554232804232804,
+          "y": 0.26944444444444443,
           "uniqueID": "id-4209",
           "ioValues": [
             {
@@ -259,7 +259,7 @@
         },
         {
           "ap2Name": "geometry2",
-          "ap1ID": "id-4234",
+          "ap1ID": "id-4228",
           "ap2ID": "id-4218"
         }
       ],
@@ -324,8 +324,8 @@
     },
     {
       "atomType": "Molecule",
-      "x": 0.3220899470899471,
-      "y": 0.28611111111111115,
+      "x": 0.32605820105820105,
+      "y": 0.2722222222222222,
       "uniqueID": "id-4263",
       "name": "Outer Loft",
       "ioValues": [
@@ -383,8 +383,8 @@
         },
         {
           "atomType": "Rotate",
-          "x": 0.32671957671957674,
-          "y": 0.8472222222222222,
+          "x": 0.32605820105820105,
+          "y": 0.8777777777777778,
           "uniqueID": "id-4276",
           "ioValues": [
             {
@@ -393,8 +393,8 @@
             },
             {
               "name": "x-axis degrees",
-              "ioValue": 0,
-              "currentEquation": "0"
+              "ioValue": 80,
+              "currentEquation": "80"
             },
             {
               "name": "y-axis degrees",
@@ -408,8 +408,8 @@
         },
         {
           "atomType": "Move",
-          "x": 0.44576719576719576,
-          "y": 0.7416666666666667,
+          "x": 0.4662698412698413,
+          "y": 0.7527777777777778,
           "uniqueID": "id-4282",
           "ioValues": [
             {
@@ -428,15 +428,15 @@
             },
             {
               "name": "zDist",
-              "ioValue": 100,
-              "currentEquation": "100"
+              "ioValue": -65.5,
+              "currentEquation": "-159/2+14"
             }
           ]
         },
         {
           "atomType": "Loft",
-          "x": 0.5052910052910053,
-          "y": 0.43333333333333335,
+          "x": 0.5,
+          "y": 0.4666666666666667,
           "uniqueID": "id-4288",
           "ioValues": [
             {
@@ -460,8 +460,8 @@
                 "plane": {
                   "origin": [
                     0,
-                    0,
-                    100
+                    64.50490782229963,
+                    -11.373955637183943
                   ],
                   "xDir": [
                     1,
@@ -470,8 +470,8 @@
                   ],
                   "normal": [
                     0,
-                    0,
-                    1
+                    -0.9848077530122081,
+                    0.17364817766693044
                   ]
                 },
                 "color": "#aad7f2",
@@ -481,7 +481,7 @@
             {
               "name": "Shape 2",
               "ioValue": {
-                "geometry": "move-cut-move-circle-79.5-0--13-0-fuse-circle-29.406-move-rectangle-500-500-0--263-0-0-0-0",
+                "geometry": "move-cut-move-circle-79.5-0--13-0-move-rectangle-500-500-0--263-0-0-0-0",
                 "dimension": "2D",
                 "tags": [],
                 "plane": {
@@ -538,6 +538,11 @@
           "ap2Name": "Shape 1",
           "ap1ID": "id-4282",
           "ap2ID": "id-4288"
+        },
+        {
+          "ap2Name": "number or geometry",
+          "ap1ID": "id-4288",
+          "ap2ID": "id-4265"
         }
       ],
       "fileTypeVersion": 1
