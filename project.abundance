@@ -44,8 +44,8 @@
     },
     {
       "atomType": "Difference",
-      "x": 0.335978835978836,
-      "y": 0.28055555555555556,
+      "x": 0.33974358974358976,
+      "y": 0.4759036144578313,
       "uniqueID": "id-4482",
       "ioValues": [
         {
@@ -60,14 +60,14 @@
     },
     {
       "atomType": "Fusion",
-      "x": 0.4305555555555555,
-      "y": 0.5972222222222222,
+      "x": 0.5480769230769231,
+      "y": 0.4307228915662651,
       "uniqueID": "id-4542",
       "ioValues": [
         {
           "name": "Shape 1",
           "ioValue": {
-            "geometry": "cut-fuse-cut-fuse-extrude-cut-move-circle-79.5-0--13-0-move-rectangle-500-500-0--265-0-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-2-move-loft-move-rotate-circle-20-0-0-0-2-25-0-cut-move-circle-79.5-0--13-0-move-rectangle-500-500-0--265-0-{\"origin\":[0,69.5,-7.716050021144838e-15],\"xDir\":[1,0,0],\"normal\":[0,-1,1.1102230246251565e-16]}-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-0-0-2-extrude-circle-29.406-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-100-fuse-fuse-fuse-fuse-fuse-move-extrude-cut-circle-4.5-circle-1.75-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-2-28.844--18-0-move-extrude-cut-circle-4.5-circle-1.75-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-2-81.788--2-0-move-extrude-cut-circle-4.5-circle-1.75-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-2--81.788--2-0-move-extrude-cut-circle-4.5-circle-1.75-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-2-67.099-35-0-move-extrude-cut-circle-4.5-circle-1.75-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-2--67.099-35-0-move-extrude-cut-circle-4.5-circle-1.75-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-2--28.844--18-0-cut-fuse-extrude-cut-move-circle-77.5-0--13-0-move-rectangle-500-500-0--263.5-0-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-2-move-loft-move-rotate-circle-18.5-0-0-0-2-25-0-cut-move-circle-77.5-0--13-0-move-rectangle-500-500-0--263.5-0-{\"origin\":[0,69.5,-7.716050021144838e-15],\"xDir\":[1,0,0],\"normal\":[0,-1,1.1102230246251565e-16]}-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-0-0-2-extrude-circle-31.5-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-100",
+            "geometry": "fuse-cut-fuse-extrude-cut-move-circle-79.5-0--13-0-move-rectangle-500-500-0--265-0-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-2-move-loft-move-rotate-circle-20-0-0-0-2-25-0-cut-move-circle-79.5-0--13-0-move-rectangle-500-500-0--265-0-{\"origin\":[0,69.5,-7.716050021144838e-15],\"xDir\":[1,0,0],\"normal\":[0,-1,1.1102230246251565e-16]}-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-0-0-2-extrude-circle-29.406-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-100-fuse-fuse-fuse-fuse-fuse-move-extrude-cut-circle-4.5-circle-1.75-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-2-28.844--18-0-move-extrude-cut-circle-4.5-circle-1.75-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-2-81.788--2-0-move-extrude-cut-circle-4.5-circle-1.75-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-2--81.788--2-0-move-extrude-cut-circle-4.5-circle-1.75-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-2-67.099-35-0-move-extrude-cut-circle-4.5-circle-1.75-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-2--67.099-35-0-move-extrude-cut-circle-4.5-circle-1.75-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-2--28.844--18-0",
             "tags": [],
             "bom": [],
             "plane": {
@@ -94,7 +94,7 @@
         {
           "name": "Shape 2",
           "ioValue": {
-            "geometry": "move-rotate-extrude-cut-circle-20-circle-18.5-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-30--90-0-0-2-69.5-27",
+            "geometry": "move-rotate-extrude-circle-20-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-30--90-0-0-2-69.5-27",
             "dimension": "3D",
             "tags": [],
             "plane": {
@@ -153,8 +153,8 @@
     },
     {
       "atomType": "Difference",
-      "x": 0.7341269841269841,
-      "y": 0.7194444444444444,
+      "x": 0.7521367521367521,
+      "y": 0.5421686746987951,
       "uniqueID": "id-4757",
       "ioValues": [
         {
@@ -718,8 +718,8 @@
         },
         {
           "atomType": "Extrude",
-          "x": 0.39153439153439157,
-          "y": 0.6,
+          "x": 0.3942307692307692,
+          "y": 0.5843373493975904,
           "uniqueID": "id-4526",
           "ioValues": [
             {
@@ -783,8 +783,8 @@
         },
         {
           "atomType": "GitHubMolecule",
-          "x": 0.23082010582010581,
-          "y": 0.5361111111111111,
+          "x": 0.24679487179487183,
+          "y": 0.4427710843373494,
           "uniqueID": "id-4510",
           "name": "Concentric_Circles",
           "ioValues": [
@@ -920,6 +920,18 @@
           },
           "unitsKey": "Unitless",
           "fileTypeVersion": 1
+        },
+        {
+          "atomType": "Circle",
+          "x": 0.2361111111111111,
+          "y": 0.7680722891566265,
+          "uniqueID": "id-5095",
+          "ioValues": [
+            {
+              "name": "diameter",
+              "ioValue": 40
+            }
+          ]
         }
       ],
       "allConnectors": [
@@ -927,6 +939,11 @@
           "ap2Name": "OD",
           "ap1ID": "id-4493",
           "ap2ID": "id-4510"
+        },
+        {
+          "ap2Name": "diameter",
+          "ap1ID": "id-4493",
+          "ap2ID": "id-5095"
         },
         {
           "ap2Name": "ID",
@@ -950,7 +967,7 @@
         },
         {
           "ap2Name": "geometry",
-          "ap1ID": "id-4510",
+          "ap1ID": "id-5095",
           "ap2ID": "id-4526"
         }
       ],
@@ -2522,6 +2539,28 @@
         }
       ],
       "fileTypeVersion": 1
+    },
+    {
+      "atomType": "Code",
+      "x": 0.7478632478632479,
+      "y": 0.8313253012048193,
+      "uniqueID": "id-5098",
+      "ioValues": [
+        {
+          "name": "shape",
+          "ioValue": "__GEOMETRY_INPUT__"
+        },
+        {
+          "name": "height",
+          "ioValue": 10
+        },
+        {
+          "name": "thickness",
+          "ioValue": 3
+        }
+      ],
+      "codeVersion": 1,
+      "code": " \n      //Inputs:[inputShape, dist, height]\n      //This defines the molecules inputs and creates variables with the same names which can be referenced in the code\n      \n      const Inputs = [\n       {inputName: \"shape\", type: \"geometry\", defaultValue: null},\n        {inputName: \"height\", type: \"number\", defaultValue: 10},\n        {inputName: \"thickness\", type: \"number\", defaultValue: 3},\n      ]\n      //Takes the address and gets the shape from the library\n      let importedShape = library[shape]\n      console.log(\"imported shape\",importedShape)\n\n      //This makes a new copy of of the shape (to prevent garbage collection issues),\n      //and moves it in the X direction. Note that this will not work if the input is an assembly\n      let movedShape = importedShape.geometry[0].clone().shell(3,  (face) =>\n    face.either([\n      (f) => f.containsPoint([0,0,0]),\n      (f) => f.inPlane(\"XY\"),\n    ]));\n      \n      \n      //Shapes stored in the library have tags, a color, a plane, and a bill of materials like this. We don't modify them here\n      let shape1 = {\n        geometry: [movedShape],\n        tags: importedShape.tags,\n        color: importedShape.color,\n        plane: importedShape.plane,\n        bom: importedShape.bom\n      }\n      \n      //We could at this point return shape1 as a complete shape and it will be automatically written to the library for us\n      return shape1\n      "
     }
   ],
   "allConnectors": [
@@ -2546,11 +2585,6 @@
       "ap2ID": "id-4489"
     },
     {
-      "ap2Name": "Shape 1",
-      "ap1ID": "id-4482",
-      "ap2ID": "id-4542"
-    },
-    {
       "ap2Name": "geometry",
       "ap1ID": "id-4542",
       "ap2ID": "id-4558"
@@ -2564,6 +2598,11 @@
       "ap2Name": "number or geometry",
       "ap1ID": "id-4757",
       "ap2ID": "id-4200"
+    },
+    {
+      "ap2Name": "shape",
+      "ap1ID": "id-4757",
+      "ap2ID": "id-5098"
     },
     {
       "ap2Name": "geometry2",
@@ -2584,6 +2623,11 @@
       "ap2Name": "geometry1",
       "ap1ID": "id-4202",
       "ap2ID": "id-4482"
+    },
+    {
+      "ap2Name": "Shape 1",
+      "ap1ID": "id-4202",
+      "ap2ID": "id-4542"
     }
   ],
   "unitsKey": "MM",
