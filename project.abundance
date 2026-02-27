@@ -7,8 +7,7 @@
   "ioValues": [
     {
       "name": "ID",
-      "ioValue": 0,
-      "currentEquation": "0"
+      "ioValue": 0
     },
     {
       "name": "OD",
@@ -1421,8 +1420,8 @@
     },
     {
       "atomType": "Molecule",
-      "x": 0.20940170940170938,
-      "y": 0.17469879518072287,
+      "x": 0.20726495726495728,
+      "y": 0.1927710843373494,
       "uniqueID": "id-4202",
       "name": "Exterior",
       "ioValues": [
@@ -1495,8 +1494,8 @@
         },
         {
           "atomType": "Difference",
-          "x": 0.2393162393162393,
-          "y": 0.5662650602409639,
+          "x": 0.24252136752136752,
+          "y": 0.575301204819277,
           "uniqueID": "id-4218",
           "ioValues": [
             {
@@ -1563,8 +1562,8 @@
         },
         {
           "atomType": "Rotate",
-          "x": 0.291005291005291,
-          "y": 0.2,
+          "x": 0.27884615384615385,
+          "y": 0.1927710843373494,
           "uniqueID": "id-4294",
           "ioValues": [
             {
@@ -1612,8 +1611,8 @@
         },
         {
           "atomType": "Loft",
-          "x": 0.3835470085470085,
-          "y": 0.5150602409638555,
+          "x": 0.38247863247863245,
+          "y": 0.4909638554216868,
           "uniqueID": "id-4308",
           "ioValues": [
             {
@@ -1691,8 +1690,8 @@
         },
         {
           "atomType": "Extrude",
-          "x": 0.6421957671957672,
-          "y": 0.2722222222222222,
+          "x": 0.610042735042735,
+          "y": 0.25,
           "uniqueID": "id-4313",
           "ioValues": [
             {
@@ -1707,8 +1706,8 @@
         },
         {
           "atomType": "Difference",
-          "x": 0.7435897435897436,
-          "y": 0.39457831325301207,
+          "x": 0.7126068376068376,
+          "y": 0.39759036144578314,
           "uniqueID": "id-4317",
           "ioValues": [
             {
@@ -1723,8 +1722,8 @@
         },
         {
           "atomType": "Move",
-          "x": 0.5021367521367521,
-          "y": 0.5030120481927711,
+          "x": 0.49679487179487186,
+          "y": 0.39759036144578314,
           "uniqueID": "id-4321",
           "ioValues": [
             {
@@ -1763,8 +1762,8 @@
         },
         {
           "atomType": "Fusion",
-          "x": 0.6217948717948718,
-          "y": 0.6295180722891566,
+          "x": 0.5811965811965811,
+          "y": 0.5813253012048193,
           "uniqueID": "id-4331",
           "ioValues": [
             {
@@ -2404,9 +2403,9 @@
         },
         {
           "atomType": "Code",
-          "x": 0.5811965811965811,
-          "y": 0.8072289156626505,
-          "uniqueID": "id-5743",
+          "x": 0.5641025641025641,
+          "y": 0.8403614457831325,
+          "uniqueID": "id-6049",
           "ioValues": [
             {
               "name": "shape",
@@ -2422,7 +2421,73 @@
             }
           ],
           "codeVersion": 1,
-          "code": " \n      //Inputs:[inputShape, dist, height]\n      //This defines the molecules inputs and creates variables with the same names which can be referenced in the code\n      \n      const Inputs = [\n       {inputName: \"shape\", type: \"geometry\", defaultValue: null},\n        {inputName: \"height\", type: \"number\", defaultValue: 10},\n        {inputName: \"thickness\", type: \"number\", defaultValue: 3},\n      ]\n      //Takes the address and gets the shape from the library\n      let importedShape = library[shape]\n      console.log(\"imported shape\",importedShape)\n\n      //This makes a new copy of of the shape (to prevent garbage collection issues),\n      //and moves it in the X direction. Note that this will not work if the input is an assembly\n      let movedShape = importedShape.geometry[0].clone().shell(3,  (face) =>\n    face.either([\n      (f) => f.containsPoint([60,0,0]),\n      (f) => f.inPlane(\"XY\"),\n    ]));\n      \n      \n      //Shapes stored in the library have tags, a color, a plane, and a bill of materials like this. We don't modify them here\n      let shape1 = {\n        geometry: [movedShape],\n        tags: importedShape.tags,\n        color: importedShape.color,\n        plane: importedShape.plane,\n        bom: importedShape.bom\n      }\n      \n      //We could at this point return shape1 as a complete shape and it will be automatically written to the library for us\n      return shape1\n      "
+          "code": " \n      //Inputs:[inputShape, dist, height]\n      //This defines the molecules inputs and creates variables with the same names which can be referenced in the code\n      \n      const Inputs = [\n       {inputName: \"shape\", type: \"geometry\", defaultValue: null},\n        {inputName: \"height\", type: \"number\", defaultValue: 10},\n        {inputName: \"thickness\", type: \"number\", defaultValue: 3},\n      ]\n      //Takes the address and gets the shape from the library\n      let importedShape = library[shape]\n      console.log(\"imported shape\",importedShape)\n\n      //This makes a new copy of of the shape (to prevent garbage collection issues),\n      //and moves it in the X direction. Note that this will not work if the input is an assembly\n      let movedShape = importedShape.geometry[0].clone().shell(1,  (face) =>\n    face.either([\n      (f) => f.containsPoint([0,0,0]),\n      (f) => f.inPlane(\"XY\"),\n    ]));\n      \n      \n      //Shapes stored in the library have tags, a color, a plane, and a bill of materials like this. We don't modify them here\n      let shape1 = {\n        geometry: [movedShape],\n        tags: importedShape.tags,\n        color: importedShape.color,\n        plane: importedShape.plane,\n        bom: importedShape.bom\n      }\n      \n      //We could at this point return shape1 as a complete shape and it will be automatically written to the library for us\n      return shape1\n      "
+        },
+        {
+          "atomType": "Code",
+          "x": 0.842948717948718,
+          "y": 0.23795180722891565,
+          "uniqueID": "id-6055",
+          "ioValues": [
+            {
+              "name": "shape",
+              "ioValue": "__GEOMETRY_INPUT__"
+            },
+            {
+              "name": "height",
+              "ioValue": 10
+            },
+            {
+              "name": "thickness",
+              "ioValue": 3
+            }
+          ],
+          "codeVersion": 1,
+          "code": " \n      //Inputs:[inputShape, dist, height]\n      //This defines the molecules inputs and creates variables with the same names which can be referenced in the code\n      \n      const Inputs = [\n       {inputName: \"shape\", type: \"geometry\", defaultValue: null},\n        {inputName: \"height\", type: \"number\", defaultValue: 10},\n        {inputName: \"thickness\", type: \"number\", defaultValue: 3},\n      ]\n      //Takes the address and gets the shape from the library\n      let importedShape = library[shape]\n      console.log(\"imported shape\",importedShape)\n\n      //This makes a new copy of of the shape (to prevent garbage collection issues),\n      //and moves it in the X direction. Note that this will not work if the input is an assembly\n      let movedShape = importedShape.geometry[0].clone().shell(1,  (face) =>\n    face.either([\n      (f) => f.containsPoint([0,0,0]),\n      (f) => f.inPlane(importedShape.plane),\n    ]));\n      \n      \n      //Shapes stored in the library have tags, a color, a plane, and a bill of materials like this. We don't modify them here\n      let shape1 = {\n        geometry: [movedShape],\n        tags: importedShape.tags,\n        color: importedShape.color,\n        plane: importedShape.plane,\n        bom: importedShape.bom\n      }\n      \n      //We could at this point return shape1 as a complete shape and it will be automatically written to the library for us\n      return shape1\n      "
+        },
+        {
+          "atomType": "Code",
+          "x": 0.6645299145299145,
+          "y": 0.7108433734939759,
+          "uniqueID": "id-6060",
+          "ioValues": [
+            {
+              "name": "shape",
+              "ioValue": "__GEOMETRY_INPUT__"
+            },
+            {
+              "name": "height",
+              "ioValue": 10
+            },
+            {
+              "name": "thickness",
+              "ioValue": 3
+            }
+          ],
+          "codeVersion": 1,
+          "code": " \n      //Inputs:[inputShape, dist, height]\n      //This defines the molecules inputs and creates variables with the same names which can be referenced in the code\n      \n      const Inputs = [\n       {inputName: \"shape\", type: \"geometry\", defaultValue: null},\n        {inputName: \"height\", type: \"number\", defaultValue: 10},\n        {inputName: \"thickness\", type: \"number\", defaultValue: 3},\n      ]\n      //Takes the address and gets the shape from the library\n      let importedShape = library[shape]\n      console.log(\"imported shape\",importedShape)\n\n      //This makes a new copy of of the shape (to prevent garbage collection issues),\n      //and moves it in the X direction. Note that this will not work if the input is an assembly\n      let movedShape = importedShape.geometry[0].clone().shell(1,  (face) =>\n    face.either([\n      (f) => f.containsPoint([0,0,0]),\n      (f) => f.inPlane(\"XY\"),\n    ]));\n      \n      \n      //Shapes stored in the library have tags, a color, a plane, and a bill of materials like this. We don't modify them here\n      let shape1 = {\n        geometry: [movedShape],\n        tags: importedShape.tags,\n        color: importedShape.color,\n        plane: importedShape.plane,\n        bom: importedShape.bom\n      }\n      \n      //We could at this point return shape1 as a complete shape and it will be automatically written to the library for us\n      return shape1\n      "
+        },
+        {
+          "atomType": "Code",
+          "x": 0.46688034188034183,
+          "y": 0.8975903614457832,
+          "uniqueID": "id-6065",
+          "ioValues": [
+            {
+              "name": "shape",
+              "ioValue": "__GEOMETRY_INPUT__"
+            },
+            {
+              "name": "height",
+              "ioValue": 10
+            },
+            {
+              "name": "thickness",
+              "ioValue": 3
+            }
+          ],
+          "codeVersion": 1,
+          "code": " \n      //Inputs:[inputShape, dist, height]\n      //This defines the molecules inputs and creates variables with the same names which can be referenced in the code\n      \n      const Inputs = [\n       {inputName: \"shape\", type: \"geometry\", defaultValue: null},\n        {inputName: \"height\", type: \"number\", defaultValue: 10},\n        {inputName: \"thickness\", type: \"number\", defaultValue: 3},\n      ]\n      //Takes the address and gets the shape from the library\n      let importedShape = library[shape]\n      console.log(\"imported shape\",importedShape)\n\n      //This makes a new copy of of the shape (to prevent garbage collection issues),\n      //and moves it in the X direction. Note that this will not work if the input is an assembly\n      let movedShape = importedShape.geometry[0].clone().shell(1,  (face) =>\n    face.either([\n      (f) => f.containsPoint([0,0,0]),\n      (f) => f.inPlane(\"XY\"),\n    ]));\n      \n      \n      //Shapes stored in the library have tags, a color, a plane, and a bill of materials like this. We don't modify them here\n      let shape1 = {\n        geometry: [movedShape],\n        tags: importedShape.tags,\n        color: importedShape.color,\n        plane: importedShape.plane,\n        bom: importedShape.bom\n      }\n      \n      //We could at this point return shape1 as a complete shape and it will be automatically written to the library for us\n      return shape1\n      "
         }
       ],
       "allConnectors": [
@@ -2484,7 +2549,7 @@
         {
           "ap2Name": "shape",
           "ap1ID": "id-4308",
-          "ap2ID": "id-5743"
+          "ap2ID": "id-6049"
         },
         {
           "ap2Name": "geometry2",
@@ -2502,6 +2567,11 @@
           "ap2ID": "id-4204"
         },
         {
+          "ap2Name": "shape",
+          "ap1ID": "id-4317",
+          "ap2ID": "id-6055"
+        },
+        {
           "ap2Name": "Shape 2",
           "ap1ID": "id-4321",
           "ap2ID": "id-4331"
@@ -2512,9 +2582,19 @@
           "ap2ID": "id-4331"
         },
         {
+          "ap2Name": "shape",
+          "ap1ID": "id-4327",
+          "ap2ID": "id-6065"
+        },
+        {
           "ap2Name": "geometry1",
           "ap1ID": "id-4331",
           "ap2ID": "id-4317"
+        },
+        {
+          "ap2Name": "shape",
+          "ap1ID": "id-4331",
+          "ap2ID": "id-6060"
         },
         {
           "ap2Name": "diameter",
