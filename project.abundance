@@ -7,7 +7,7 @@
   "ioValues": [
     {
       "name": "ID",
-      "ioValue": 37
+      "ioValue": 0
     },
     {
       "name": "OD",
@@ -44,8 +44,8 @@
     },
     {
       "atomType": "Difference",
-      "x": 0.33974358974358976,
-      "y": 0.4759036144578313,
+      "x": 0.30982905982905984,
+      "y": 0.5331325301204819,
       "uniqueID": "id-4482",
       "ioValues": [
         {
@@ -60,14 +60,14 @@
     },
     {
       "atomType": "Fusion",
-      "x": 0.5480769230769231,
-      "y": 0.4307228915662651,
+      "x": 0.47756410256410253,
+      "y": 0.3885542168674699,
       "uniqueID": "id-4542",
       "ioValues": [
         {
           "name": "Shape 1",
           "ioValue": {
-            "geometry": "fuse-cut-fuse-extrude-cut-move-circle-79.5-0--13-0-move-rectangle-500-500-0--265-0-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-2-move-loft-move-rotate-circle-20-0-0-0-2-25-0-cut-move-circle-79.5-0--13-0-move-rectangle-500-500-0--265-0-{\"origin\":[0,69.5,-7.716050021144838e-15],\"xDir\":[1,0,0],\"normal\":[0,-1,1.1102230246251565e-16]}-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-0-0-2-extrude-circle-29.406-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-100-fuse-fuse-fuse-fuse-fuse-move-extrude-cut-circle-4.5-circle-1.75-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-2-28.844--18-0-move-extrude-cut-circle-4.5-circle-1.75-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-2-81.788--2-0-move-extrude-cut-circle-4.5-circle-1.75-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-2--81.788--2-0-move-extrude-cut-circle-4.5-circle-1.75-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-2-67.099-35-0-move-extrude-cut-circle-4.5-circle-1.75-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-2--67.099-35-0-move-extrude-cut-circle-4.5-circle-1.75-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-2--28.844--18-0",
+            "geometry": "cut-fuse-extrude-cut-move-circle-79.5-0--13-0-move-rectangle-500-500-0--265-0-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-2-move-loft-move-rotate-circle-20-0-0-0-2-25-0-cut-move-circle-79.5-0--13-0-move-rectangle-500-500-0--265-0-{\"origin\":[0,69.5,-7.716050021144838e-15],\"xDir\":[1,0,0],\"normal\":[0,-1,1.1102230246251565e-16]}-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-0-0-2-extrude-circle-29.406-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-100",
             "tags": [],
             "bom": [],
             "plane": {
@@ -153,7 +153,7 @@
     },
     {
       "atomType": "Difference",
-      "x": 0.7521367521367521,
+      "x": 0.701923076923077,
       "y": 0.5421686746987951,
       "uniqueID": "id-4757",
       "ioValues": [
@@ -168,15 +168,38 @@
       ]
     },
     {
+      "atomType": "Code",
+      "x": 0.8237179487179488,
+      "y": 0.7771084337349398,
+      "uniqueID": "id-5098",
+      "ioValues": [
+        {
+          "name": "shape",
+          "ioValue": "__GEOMETRY_INPUT__"
+        },
+        {
+          "name": "height",
+          "ioValue": 10,
+          "currentEquation": "10"
+        },
+        {
+          "name": "thickness",
+          "ioValue": 3
+        }
+      ],
+      "codeVersion": 1,
+      "code": " \n      //Inputs:[inputShape, dist, height]\n      //This defines the molecules inputs and creates variables with the same names which can be referenced in the code\n      \n      const Inputs = [\n       {inputName: \"shape\", type: \"geometry\", defaultValue: null},\n        {inputName: \"height\", type: \"number\", defaultValue: 10},\n        {inputName: \"thickness\", type: \"number\", defaultValue: 3},\n      ]\n      //Takes the address and gets the shape from the library\n      let importedShape = library[shape]\n      console.log(\"imported shape\",importedShape)\n\n      //This makes a new copy of of the shape (to prevent garbage collection issues),\n      //and moves it in the X direction. Note that this will not work if the input is an assembly\n      let movedShape = importedShape.geometry[0].clone().shell(thickness,  (face) =>\n    face.either([\n      (f) => f.containsPoint([0,70,0]),\n      (f) => f.inPlane(\"XY\"),\n    ]));\n      \n      \n      //Shapes stored in the library have tags, a color, a plane, and a bill of materials like this. We don't modify them here\n      let shape1 = {\n        geometry: [movedShape],\n        tags: importedShape.tags,\n        color: importedShape.color,\n        plane: importedShape.plane,\n        bom: importedShape.bom\n      }\n      \n      //We could at this point return shape1 as a complete shape and it will be automatically written to the library for us\n      return shape1\n      "
+    },
+    {
       "atomType": "Molecule",
-      "x": 0.20446851726472579,
-      "y": 0.4328358208955224,
+      "x": 0.19764957264957267,
+      "y": 0.5662650602409639,
       "uniqueID": "id-4404",
       "name": "Interior",
       "ioValues": [
         {
           "name": "ID",
-          "ioValue": 37
+          "ioValue": 0
         }
       ],
       "topLevel": false,
@@ -305,7 +328,7 @@
           "ioValues": [
             {
               "name": "diameter",
-              "ioValue": 37
+              "ioValue": 0
             }
           ]
         },
@@ -379,7 +402,7 @@
             {
               "name": "Shape 1",
               "ioValue": {
-                "geometry": "move-rotate-circle-18.5-0-0-0-2-25-0",
+                "geometry": "move-rotate-circle-0-0-0-0-2-25-0",
                 "dimension": "2D",
                 "tags": [],
                 "plane": {
@@ -544,30 +567,7 @@
             },
             {
               "name": "Shape 2",
-              "ioValue": {
-                "geometry": "move-loft-move-rotate-circle-18.5-0-0-0-2-25-0-cut-move-circle-77.5-0--13-0-move-rectangle-500-500-0--263.5-0-{\"origin\":[0,69.5,-7.716050021144838e-15],\"xDir\":[1,0,0],\"normal\":[0,-1,1.1102230246251565e-16]}-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-0-0-2",
-                "dimension": "3D",
-                "tags": [],
-                "plane": {
-                  "origin": [
-                    0,
-                    0,
-                    0
-                  ],
-                  "xDir": [
-                    1,
-                    0,
-                    0
-                  ],
-                  "normal": [
-                    0,
-                    0,
-                    1
-                  ]
-                },
-                "color": "#aad7f2",
-                "bom": []
-              }
+              "ioValue": null
             }
           ],
           "unionType": "Fusion"
@@ -683,7 +683,7 @@
         },
         {
           "name": "ID",
-          "ioValue": 37
+          "ioValue": 0
         }
       ],
       "topLevel": false,
@@ -782,6 +782,18 @@
           ]
         },
         {
+          "atomType": "Circle",
+          "x": 0.2361111111111111,
+          "y": 0.7680722891566265,
+          "uniqueID": "id-5095",
+          "ioValues": [
+            {
+              "name": "diameter",
+              "ioValue": 40
+            }
+          ]
+        },
+        {
           "atomType": "GitHubMolecule",
           "x": 0.24679487179487183,
           "y": 0.4427710843373494,
@@ -791,10 +803,6 @@
             {
               "name": "OD",
               "ioValue": 40
-            },
-            {
-              "name": "ID",
-              "ioValue": 37
             }
           ],
           "topLevel": false,
@@ -831,25 +839,13 @@
               "atomType": "Circle",
               "x": 0.460559796437659,
               "y": 0.42567567567567566,
-              "uniqueID": "id-4507",
-              "ioValues": [
-                {
-                  "name": "diameter",
-                  "ioValue": 40
-                }
-              ]
+              "uniqueID": "id-4507"
             },
             {
               "atomType": "Circle",
               "x": 0.44529262086514,
               "y": 0.7263513513513513,
-              "uniqueID": "id-4508",
-              "ioValues": [
-                {
-                  "name": "diameter",
-                  "ioValue": 37
-                }
-              ]
+              "uniqueID": "id-4508"
             },
             {
               "atomType": "Difference",
@@ -920,18 +916,6 @@
           },
           "unitsKey": "Unitless",
           "fileTypeVersion": 1
-        },
-        {
-          "atomType": "Circle",
-          "x": 0.2361111111111111,
-          "y": 0.7680722891566265,
-          "uniqueID": "id-5095",
-          "ioValues": [
-            {
-              "name": "diameter",
-              "ioValue": 40
-            }
-          ]
         }
       ],
       "allConnectors": [
@@ -1459,8 +1443,8 @@
     },
     {
       "atomType": "Molecule",
-      "x": 0.20105820105820105,
-      "y": 0.2,
+      "x": 0.20405982905982906,
+      "y": 0.1957831325301205,
       "uniqueID": "id-4202",
       "name": "Exterior",
       "ioValues": [
@@ -1485,8 +1469,8 @@
         },
         {
           "atomType": "Circle",
-          "x": 0.45171957671957674,
-          "y": 0.1861111111111111,
+          "x": 0.44658119658119655,
+          "y": 0.19879518072289157,
           "uniqueID": "id-4206",
           "ioValues": [
             {
@@ -1497,8 +1481,8 @@
         },
         {
           "atomType": "Circle",
-          "x": 0.046957671957671955,
-          "y": 0.37777777777777777,
+          "x": 0.03739316239316239,
+          "y": 0.3734939759036145,
           "uniqueID": "id-4209",
           "ioValues": [
             {
@@ -1877,33 +1861,6 @@
           "uniqueID": "id-4674",
           "ioValues": [
             {
-              "name": "Shape 1",
-              "ioValue": {
-                "geometry": "fuse-fuse-fuse-fuse-fuse-move-extrude-cut-circle-4.5-circle-1.75-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-2-28.844--18-0-move-extrude-cut-circle-4.5-circle-1.75-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-2-81.788--2-0-move-extrude-cut-circle-4.5-circle-1.75-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-2--81.788--2-0-move-extrude-cut-circle-4.5-circle-1.75-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-2-67.099-35-0-move-extrude-cut-circle-4.5-circle-1.75-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-2--67.099-35-0-move-extrude-cut-circle-4.5-circle-1.75-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-2--28.844--18-0",
-                "tags": [],
-                "bom": [],
-                "plane": {
-                  "origin": [
-                    0,
-                    0,
-                    0
-                  ],
-                  "xDir": [
-                    1,
-                    0,
-                    0
-                  ],
-                  "normal": [
-                    0,
-                    0,
-                    1
-                  ]
-                },
-                "color": "#aad7f2",
-                "dimension": "3D"
-              }
-            },
-            {
               "name": "Shape 2",
               "ioValue": {
                 "geometry": "cut-fuse-extrude-cut-move-circle-79.5-0--13-0-move-rectangle-500-500-0--265-0-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-2-move-loft-move-rotate-circle-20-0-0-0-2-25-0-cut-move-circle-79.5-0--13-0-move-rectangle-500-500-0--265-0-{\"origin\":[0,69.5,-7.716050021144838e-15],\"xDir\":[1,0,0],\"normal\":[0,-1,1.1102230246251565e-16]}-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-0-0-2-extrude-circle-29.406-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-100",
@@ -1935,8 +1892,8 @@
         },
         {
           "atomType": "Molecule",
-          "x": 0.7566137566137566,
-          "y": 0.8194444444444444,
+          "x": 0.6858974358974359,
+          "y": 0.8433734939759037,
           "uniqueID": "id-4585",
           "name": "Mounting Holes",
           "topLevel": false,
@@ -2531,36 +2488,34 @@
           "ap2Name": "number or geometry",
           "ap1ID": "id-4674",
           "ap2ID": "id-4204"
-        },
-        {
-          "ap2Name": "Shape 1",
-          "ap1ID": "id-4585",
-          "ap2ID": "id-4674"
         }
       ],
       "fileTypeVersion": 1
     },
     {
-      "atomType": "Code",
-      "x": 0.7478632478632479,
-      "y": 0.8313253012048193,
-      "uniqueID": "id-5098",
+      "atomType": "Move",
+      "x": 0.7008547008547009,
+      "y": 0.7710843373493976,
+      "uniqueID": "id-5405",
       "ioValues": [
         {
-          "name": "shape",
+          "name": "geometry",
           "ioValue": "__GEOMETRY_INPUT__"
         },
         {
-          "name": "height",
-          "ioValue": 10
+          "name": "xDist",
+          "ioValue": 0
         },
         {
-          "name": "thickness",
-          "ioValue": 3
+          "name": "yDist",
+          "ioValue": -50,
+          "currentEquation": "-50"
+        },
+        {
+          "name": "zDist",
+          "ioValue": 0
         }
-      ],
-      "codeVersion": 1,
-      "code": " \n      //Inputs:[inputShape, dist, height]\n      //This defines the molecules inputs and creates variables with the same names which can be referenced in the code\n      \n      const Inputs = [\n       {inputName: \"shape\", type: \"geometry\", defaultValue: null},\n        {inputName: \"height\", type: \"number\", defaultValue: 10},\n        {inputName: \"thickness\", type: \"number\", defaultValue: 3},\n      ]\n      //Takes the address and gets the shape from the library\n      let importedShape = library[shape]\n      console.log(\"imported shape\",importedShape)\n\n      //This makes a new copy of of the shape (to prevent garbage collection issues),\n      //and moves it in the X direction. Note that this will not work if the input is an assembly\n      let movedShape = importedShape.geometry[0].clone().shell(3,  (face) =>\n    face.either([\n      (f) => f.containsPoint([0,0,0]),\n      (f) => f.inPlane(\"XY\"),\n    ]));\n      \n      \n      //Shapes stored in the library have tags, a color, a plane, and a bill of materials like this. We don't modify them here\n      let shape1 = {\n        geometry: [movedShape],\n        tags: importedShape.tags,\n        color: importedShape.color,\n        plane: importedShape.plane,\n        bom: importedShape.bom\n      }\n      \n      //We could at this point return shape1 as a complete shape and it will be automatically written to the library for us\n      return shape1\n      "
+      ]
     }
   ],
   "allConnectors": [
@@ -2600,9 +2555,9 @@
       "ap2ID": "id-4200"
     },
     {
-      "ap2Name": "shape",
+      "ap2Name": "geometry",
       "ap1ID": "id-4757",
-      "ap2ID": "id-5098"
+      "ap2ID": "id-5405"
     },
     {
       "ap2Name": "geometry2",
@@ -2628,6 +2583,11 @@
       "ap2Name": "Shape 1",
       "ap1ID": "id-4202",
       "ap2ID": "id-4542"
+    },
+    {
+      "ap2Name": "shape",
+      "ap1ID": "id-5405",
+      "ap2ID": "id-5098"
     }
   ],
   "unitsKey": "MM",
