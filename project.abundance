@@ -1533,8 +1533,8 @@
         },
         {
           "atomType": "Difference",
-          "x": 0.24154589371980678,
-          "y": 0.5813253012048193,
+          "x": 0.2646733111849391,
+          "y": 0.572289156626506,
           "uniqueID": "id-4218",
           "ioValues": [
             {
@@ -1650,8 +1650,8 @@
         },
         {
           "atomType": "Loft",
-          "x": 0.34202898550724636,
-          "y": 0.46686746987951805,
+          "x": 0.4177323103154305,
+          "y": 0.4759036144578313,
           "uniqueID": "id-4308",
           "ioValues": [
             {
@@ -1785,8 +1785,8 @@
         },
         {
           "atomType": "Extrude",
-          "x": 0.38067632850241545,
-          "y": 0.6445783132530121,
+          "x": 0.4008859357696567,
+          "y": 0.6114457831325302,
           "uniqueID": "id-4327",
           "ioValues": [
             {
@@ -1801,8 +1801,8 @@
         },
         {
           "atomType": "Fusion",
-          "x": 0.563034188034188,
-          "y": 0.5813253012048193,
+          "x": 0.5556640625,
+          "y": 0.5873493975903614,
           "uniqueID": "id-4331",
           "ioValues": [
             {
@@ -1957,8 +1957,8 @@
         },
         {
           "atomType": "Code",
-          "x": 0.7451171875,
-          "y": 0.1927710843373494,
+          "x": 0.7490234375,
+          "y": 0.18373493975903615,
           "uniqueID": "id-6055",
           "ioValues": [
             {
@@ -2001,8 +2001,8 @@
         },
         {
           "atomType": "Difference",
-          "x": 0.73828125,
-          "y": 0.5060240963855421,
+          "x": 0.7333984375,
+          "y": 0.5030120481927711,
           "uniqueID": "id-6080",
           "ioValues": [
             {
@@ -2524,25 +2524,21 @@
         },
         {
           "atomType": "Code",
-          "x": 0.8173828125,
-          "y": 0.8765060240963856,
-          "uniqueID": "id-7081",
+          "x": 0.44850498338870426,
+          "y": 0.8373493975903615,
+          "uniqueID": "id-7406",
           "ioValues": [
             {
-              "name": "shape",
+              "name": "tool",
               "ioValue": "__GEOMETRY_INPUT__"
             },
             {
-              "name": "radius",
-              "ioValue": 7
-            },
-            {
-              "name": "height",
-              "ioValue": 12
+              "name": "sketch2",
+              "ioValue": "__GEOMETRY_INPUT__"
             }
           ],
           "codeVersion": 1,
-          "code": "\n// Example Code\nconst Inputs = [\n  { inputName: \"shape\", type: \"geometry\", defaultValue: null },\n  { inputName: \"radius\", type: \"number\", defaultValue: 5 },\n  { inputName: \"height\", type: \"number\", defaultValue: 10 }\n];\n\nlet importedShape = library[shape]\nconsole.log(importedShape)\nlet newPlane = replicad.makePlane()\nlet circDraw = replicad.drawCircle(radius)\nlet sketchCir = circDraw.sketchOnPlane(newPlane)\nlet cyl = sketchCir.extrude(height)\nlet cylObj = {\n  geometry: [cyl],\n  dimension: \"3D\",\n  tags: [\"createdCylinder\"],\n  color: \"#A3CE5B\",\n  plane: null,\n  bom: []\n};\n\nreturn cylObj"
+          "code": "\n// Example Code\nconst Inputs = [\n  { inputName: \"tool\", type: \"geometry\", defaultValue: null },\n  { inputName: \"sketch2\", type: \"geometry\", defaultValue: null },\n];\nlet planex = replicad.makePlane(\"XY\").translateZ(10)\nlet baseCircle = replicad.drawEllipse(10, 5).translate([50,0])\nlet sketchCircle = baseCircle.sketchOnPlane(planex)\n\nlet topCircle = replicad.drawEllipse(10, 5)\nlet sketchTopCircle = topCircle.sketchOnPlane(\"ZY\")\n\n//let newPlane = replicad.makePlane()\nlet loftShape = sketchCircle.loftWith(\n  sketchTopCircle, \n   {}, \n   true)\nconsole.log(loftShape)\nlet cutShape = library[tool].geometry[0]\n\nconsole.log(cutShape)\nlet cylObj = {\n  geometry: [replicad.makeSolid([loftShape])],\n  dimension: \"3D\",\n  tags: [\"createdCylinder\"],\n  color: \"#A3CE5B\",\n  plane: null,\n  bom: []\n};\nconsole.log(cylObj)\n\nreturn cylObj\n"
         }
       ],
       "allConnectors": [
@@ -2642,6 +2638,11 @@
           "ap2ID": "id-6080"
         },
         {
+          "ap2Name": "tool",
+          "ap1ID": "id-4327",
+          "ap2ID": "id-7406"
+        },
+        {
           "ap2Name": "shape",
           "ap1ID": "id-4331",
           "ap2ID": "id-6060"
@@ -2660,11 +2661,6 @@
           "ap2Name": "Shape 2",
           "ap1ID": "id-6080",
           "ap2ID": "id-4674"
-        },
-        {
-          "ap2Name": "shape",
-          "ap1ID": "id-6080",
-          "ap2ID": "id-7081"
         },
         {
           "ap2Name": "Shape 3",
