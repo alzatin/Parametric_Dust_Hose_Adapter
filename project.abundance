@@ -153,8 +153,8 @@
     },
     {
       "atomType": "Difference",
-      "x": 0.6611295681063123,
-      "y": 0.5240963855421688,
+      "x": 0.6578073089700998,
+      "y": 0.5180722891566265,
       "uniqueID": "id-4757",
       "ioValues": [
         {
@@ -2541,8 +2541,8 @@
     },
     {
       "atomType": "Code",
-      "x": 0.7884828349944628,
-      "y": 0.6596385542168675,
+      "x": 0.6866002214839424,
+      "y": 0.8222891566265061,
       "uniqueID": "id-7417",
       "ioValues": [
         {
@@ -2556,51 +2556,43 @@
         },
         {
           "name": "thickness",
-          "ioValue": 0.5
+          "ioValue": -0.1,
+          "currentEquation": "-.1"
         }
       ],
       "codeVersion": 1,
       "code": " \n      //Inputs:[inputShape, dist, height]\n      //This defines the molecules inputs and creates variables with the same names which can be referenced in the code\n      \n      const Inputs = [\n       {inputName: \"shape\", type: \"geometry\", defaultValue: null},\n        {inputName: \"height\", type: \"number\", defaultValue: 10},\n        {inputName: \"thickness\", type: \"number\", defaultValue: 1},\n      ]\n      //Takes the address and gets the shape from the library\n      let importedShape = library[shape]\n      console.log(\"imported shape\",importedShape)\n\n      //This makes a new copy of of the shape (to prevent garbage collection issues),\n      //and moves it in the X direction. Note that this will not work if the input is an assembly\n      let movedShape = importedShape.geometry[0].clone().shell(thickness,  (face) =>\n    face.either([\n      (f) => f.containsPoint([0,0,0]),\n      (f) => f.inPlane(\"XY\"),\n    ]));\n      \n      console.log(movedShape)\n      //Shapes stored in the library have tags, a color, a plane, and a bill of materials like this. We don't modify them here\n      let shape1 = {\n        geometry: [movedShape],\n        tags: importedShape.tags,\n        color: importedShape.color,\n        plane: importedShape.plane,\n        bom: importedShape.bom\n      }\n      \n      //We could at this point return shape1 as a complete shape and it will be automatically written to the library for us\n      return shape1\n      "
     },
     {
-      "atomType": "Rectangle",
-      "x": 0.6334440753045404,
-      "y": 0.9156626506024097,
-      "uniqueID": "id-7432",
-      "ioValues": [
-        {
-          "name": "x length",
-          "ioValue": 100,
-          "currentEquation": "100"
-        },
-        {
-          "name": "y length",
-          "ioValue": 100,
-          "currentEquation": "100"
-        }
-      ]
-    },
-    {
-      "atomType": "Extrude",
-      "x": 0.7718715393133997,
-      "y": 0.9066265060240964,
-      "uniqueID": "id-7436",
+      "atomType": "Move",
+      "x": 0.7829457364341085,
+      "y": 0.40361445783132527,
+      "uniqueID": "id-7444",
       "ioValues": [
         {
           "name": "geometry",
           "ioValue": "__GEOMETRY_INPUT__"
         },
         {
-          "name": "height",
-          "ioValue": 10
+          "name": "xDist",
+          "ioValue": 0
+        },
+        {
+          "name": "yDist",
+          "ioValue": 0
+        },
+        {
+          "name": "zDist",
+          "ioValue": 0,
+          "currentEquation": "0"
         }
       ]
     },
     {
-      "atomType": "Difference",
-      "x": 0.8648947951273533,
-      "y": 0.8162650602409638,
-      "uniqueID": "id-7440",
+      "atomType": "Intersection",
+      "x": 0.8416389811738649,
+      "y": 0.7319277108433735,
+      "uniqueID": "id-7450",
       "ioValues": [
         {
           "name": "geometry1",
@@ -2655,6 +2647,11 @@
       "ap2ID": "id-7417"
     },
     {
+      "ap2Name": "geometry",
+      "ap1ID": "id-4757",
+      "ap2ID": "id-7444"
+    },
+    {
       "ap2Name": "geometry2",
       "ap1ID": "id-4404",
       "ap2ID": "id-4482"
@@ -2682,17 +2679,12 @@
     {
       "ap2Name": "geometry2",
       "ap1ID": "id-7417",
-      "ap2ID": "id-7440"
-    },
-    {
-      "ap2Name": "geometry",
-      "ap1ID": "id-7432",
-      "ap2ID": "id-7436"
+      "ap2ID": "id-7450"
     },
     {
       "ap2Name": "geometry1",
-      "ap1ID": "id-7436",
-      "ap2ID": "id-7440"
+      "ap1ID": "id-7444",
+      "ap2ID": "id-7450"
     }
   ],
   "unitsKey": "MM",
