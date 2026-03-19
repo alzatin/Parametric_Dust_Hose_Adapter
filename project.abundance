@@ -66,30 +66,7 @@
       "ioValues": [
         {
           "name": "Shape 1",
-          "ioValue": {
-            "geometry": "fuse-cut-fuse-extrude-cut-move-circle-79.5-0--13-0-move-rectangle-500-500-0--265-0-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-2-move-loft-move-rotate-circle-20-0-0-0-2-25-0-cut-move-circle-79.5-0--13-0-move-rectangle-500-500-0--265-0-{\"origin\":[0,69.5,-7.716050021144838e-15],\"xDir\":[1,0,0],\"normal\":[0,-1,1.1102230246251565e-16]}-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-0-0-2-extrude-circle-29.406-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-100-fuse-fuse-fuse-fuse-fuse-move-extrude-cut-circle-4.5-circle-1.75-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-2-28.844--18-0-move-extrude-cut-circle-4.5-circle-1.75-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-2-81.788--2-0-move-extrude-cut-circle-4.5-circle-1.75-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-2--81.788--2-0-move-extrude-cut-circle-4.5-circle-1.75-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-2-67.099-35-0-move-extrude-cut-circle-4.5-circle-1.75-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-2--67.099-35-0-move-extrude-cut-circle-4.5-circle-1.75-{\"origin\":[0,0,0],\"xDir\":[1,0,0],\"normal\":[0,0,1]}-2--28.844--18-0",
-            "tags": [],
-            "bom": [],
-            "plane": {
-              "origin": [
-                0,
-                0,
-                0
-              ],
-              "xDir": [
-                1,
-                0,
-                0
-              ],
-              "normal": [
-                0,
-                0,
-                1
-              ]
-            },
-            "color": "#aad7f2",
-            "dimension": "3D"
-          }
+          "ioValue": null
         },
         {
           "name": "Shape 2",
@@ -789,10 +766,6 @@
             {
               "name": "scaleFactor",
               "ioValue": 1.01
-            },
-            {
-              "name": "inputShape",
-              "ioValue": "__GEOMETRY_INPUT__"
             }
           ],
           "codeVersion": 1,
@@ -835,6 +808,10 @@
             {
               "name": "scaleFactor",
               "ioValue": 3
+            },
+            {
+              "name": "inputShape",
+              "ioValue": "__GEOMETRY_INPUT__"
             }
           ],
           "codeVersion": 1,
@@ -2143,6 +2120,10 @@
                 {
                   "name": "scaleFactor",
                   "ioValue": 1.2
+                },
+                {
+                  "name": "inputShape",
+                  "ioValue": "__GEOMETRY_INPUT__"
                 }
               ],
               "codeVersion": 1,
@@ -2185,10 +2166,6 @@
                 {
                   "name": "scaleFactor",
                   "ioValue": 3
-                },
-                {
-                  "name": "inputShape",
-                  "ioValue": "__GEOMETRY_INPUT__"
                 }
               ],
               "codeVersion": 1,
@@ -2523,8 +2500,8 @@
         },
         {
           "atomType": "Difference",
-          "x": 0.23015873015873015,
-          "y": 0.5444444444444444,
+          "x": 0.28368794326241137,
+          "y": 0.572289156626506,
           "uniqueID": "id-4218",
           "ioValues": [
             {
@@ -2615,8 +2592,8 @@
         },
         {
           "atomType": "Move",
-          "x": 0.3458994708994709,
-          "y": 0.2833333333333333,
+          "x": 0.3414387031408308,
+          "y": 0.2650602409638554,
           "uniqueID": "id-4295",
           "ioValues": [
             {
@@ -2922,6 +2899,24 @@
             }
           ],
           "unionType": "Fusion"
+        },
+        {
+          "atomType": "Code",
+          "x": 0.7507598784194529,
+          "y": 0.16566265060240964,
+          "uniqueID": "id-5910",
+          "ioValues": [
+            {
+              "name": "sketch1",
+              "ioValue": "__GEOMETRY_INPUT__"
+            },
+            {
+              "name": "sketch2",
+              "ioValue": "__GEOMETRY_INPUT__"
+            }
+          ],
+          "codeVersion": 1,
+          "code": "\n// Example Code\nconst Inputs = [\n  { inputName: \"sketch1\", type: \"geometry\", defaultValue: null },\n  { inputName: \"sketch2\", type: \"geometry\", defaultValue: null },\n];\n\nconst sketchSketch = library[sketch1].geometry[0].sketchOnPlane(\"XY\")\n\nlet planex = replicad.makePlane(\"XY\")\nconsole.log(library[sketch2].plane)\nconst sketchSketch2 = library[sketch2].geometry[0].sketchOnPlane(library[sketch2].plane)\n\n\n//let newPlane = replicad.makePlane()\nlet loftShape = sketchSketch.loftWith(\n  sketchSketch2, \n   {}, \n   false).shell(1,  (face) =>\n    face.inPlane(planex));\nlet cylObj = {\n  geometry: [loftShape],\n  dimension: \"3D\",\n  tags: [\"createdCylinder\"],\n  color: \"#A3CE5B\",\n  plane: null,\n  bom: []\n};\n\nreturn cylObj\n"
         },
         {
           "atomType": "Molecule",
@@ -3429,25 +3424,6 @@
             }
           ],
           "fileTypeVersion": 1
-        },
-        {
-          "atomType": "Code",
-          "x": 0.739614994934144,
-          "y": 0.25301204819277107,
-          "uniqueID": "id-5910",
-          "ioValues": [
-            {
-              "name": "shape",
-              "ioValue": "__GEOMETRY_INPUT__"
-            },
-            {
-              "name": "thickness",
-              "ioValue": -1,
-              "currentEquation": "-1"
-            }
-          ],
-          "codeVersion": 1,
-          "code": " \n      //Inputs:[inputShape, dist, height]\n      //This defines the molecules inputs and creates variables with the same names which can be referenced in the code\n      \n      const Inputs = [\n       {inputName: \"shape\", type: \"geometry\", defaultValue: null},\n        {inputName: \"thickness\", type: \"number\", defaultValue: 3},\n      ]\n      //Takes the address and gets the shape from the library\n      let importedShape = library[shape]\n      console.log(\"imported shape\",importedShape)\n\n     let planex = replicad.makePlane(\"XY\")\n\n      //This makes a new copy of of the shape (to prevent garbage collection issues),\n      //and moves it in the X direction. Note that this will not work if the input is an assembly\n      let movedShape = importedShape.geometry[0].clone().shell(-1.1,  (face) =>\n    face.inPlane(\"XY\"))\nconsole.log(\"movedShape\", movedShape)\n\n      let solidShell = replicad.makeSolid([movedShape])\n\n  console.log(\"solidShell\",solidShell)\n      \n      //Shapes stored in the library have tags, a color, a plane, and a bill of materials like this. We don't modify them here\n      let shape1 = {\n        geometry: [solidShell],\n        tags: importedShape.tags,\n        color: importedShape.color,\n        plane: importedShape.plane,\n        bom: importedShape.bom\n      }\n      \n      //We could at this point return shape1 as a complete shape and it will be automatically written to the library for us\n      return shape1\n      "
         }
       ],
       "allConnectors": [
@@ -3477,6 +3453,11 @@
           "ap2ID": "id-4327"
         },
         {
+          "ap2Name": "sketch1",
+          "ap1ID": "id-4218",
+          "ap2ID": "id-5910"
+        },
+        {
           "ap2Name": "geometry",
           "ap1ID": "id-4224",
           "ap2ID": "id-4228"
@@ -3502,14 +3483,14 @@
           "ap2ID": "id-4308"
         },
         {
+          "ap2Name": "sketch2",
+          "ap1ID": "id-4295",
+          "ap2ID": "id-5910"
+        },
+        {
           "ap2Name": "geometry",
           "ap1ID": "id-4308",
           "ap2ID": "id-4321"
-        },
-        {
-          "ap2Name": "shape",
-          "ap1ID": "id-4308",
-          "ap2ID": "id-5910"
         },
         {
           "ap2Name": "geometry2",
