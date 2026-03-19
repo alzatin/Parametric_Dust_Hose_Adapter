@@ -2712,8 +2712,8 @@
         },
         {
           "atomType": "Difference",
-          "x": 0.6990881458966566,
-          "y": 0.48192771084337344,
+          "x": 0.7001013171225937,
+          "y": 0.4939759036144578,
           "uniqueID": "id-4317",
           "ioValues": [
             {
@@ -2902,8 +2902,8 @@
         },
         {
           "atomType": "Code",
-          "x": 0.7558257345491387,
-          "y": 0.23795180722891565,
+          "x": 0.6990881458966566,
+          "y": 0.2469879518072289,
           "uniqueID": "id-5910",
           "ioValues": [
             {
@@ -2916,7 +2916,7 @@
             }
           ],
           "codeVersion": 1,
-          "code": "\n// Example Code\nconst Inputs = [\n  { inputName: \"sketch1\", type: \"geometry\", defaultValue: null },\n  { inputName: \"sketch2\", type: \"geometry\", defaultValue: null },\n];\n\nconst sketchSketch = library[sketch1].geometry[0].sketchOnPlane(\"XY\")\n\nlet planex = replicad.makePlane(\"XY\")\nconsole.log(library[sketch2].plane)\nconst sketchSketch2 = library[sketch2].geometry[0].sketchOnPlane(library[sketch2].plane)\n\n\n//let newPlane = replicad.makePlane()\nlet loftShape = sketchSketch.loftWith(\n  sketchSketch2, \n   {}, \n   false).shell(1,  (face) =>\n    face.inPlane(planex));\nlet cylObj = {\n  geometry: [loftShape],\n  dimension: \"3D\",\n  tags: [\"createdCylinder\"],\n  color: \"#A3CE5B\",\n  plane: null,\n  bom: []\n};\n\nreturn cylObj\n"
+          "code": "\n// Example Code\nconst Inputs = [\n  { inputName: \"sketch1\", type: \"geometry\", defaultValue: null },\n  { inputName: \"sketch2\", type: \"geometry\", defaultValue: null },\n];\n\nconst sketchSketch = library[sketch1].geometry[0].sketchOnPlane(\"XY\")\n\nlet planex = replicad.makePlane(\"XY\")\nconsole.log(library[sketch2].plane)\nconst sketchSketch2 = library[sketch2].geometry[0].sketchOnPlane(library[sketch2].plane)\n\n\n//let newPlane = replicad.makePlane()\nlet loftShape = sketchSketch.loftWith(\n  sketchSketch2, \n   {}, \n   false).shell(-1) /*,  (face) =>\n    face.inPlane(planex));*/\nlet cylObj = {\n  geometry: [loftShape],\n  dimension: \"3D\",\n  tags: [\"createdCylinder\"],\n  color: \"#A3CE5B\",\n  plane: null,\n  bom: []\n};\n\nreturn cylObj\n"
         },
         {
           "atomType": "Molecule",
